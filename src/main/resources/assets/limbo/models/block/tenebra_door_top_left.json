@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "limbo:block/tenebra_door_bottom",
+    "top": "limbo:block/tenebra_door_top"
+  }
+}

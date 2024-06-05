@@ -29,7 +29,7 @@ public class WorldRendererMixin {
     }
     @Inject(at = @At("HEAD"), method = "renderSky(Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", cancellable = true)
     public void disable_celestial_bodies(Matrix4f matrix4f, Matrix4f projectionMatrix, float tickDelta, Camera camera, boolean thickFog, Runnable fogCallback, CallbackInfo ci) {
-        if (MinecraftClient.getInstance().world.getRegistryKey().getValue().equals(new Identifier("limbo:dimension"))) {
+        if (MinecraftClient.getInstance().world.getRegistryKey().getValue().equals(new Identifier("limbo:limbo"))) {
             ci.cancel();
         }
     }
@@ -40,7 +40,7 @@ public class WorldRendererMixin {
 
     @Inject(at = @At("HEAD"), method = "renderClouds(Lnet/minecraft/client/util/math/MatrixStack;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;FDDD)V", cancellable = true)
     public void disable_clouds(MatrixStack matrices, Matrix4f matrix4f, Matrix4f matrix4f2, float tickDelta, double cameraX, double cameraY, double cameraZ, CallbackInfo ci) {
-        if (MinecraftClient.getInstance().world.getRegistryKey().getValue().equals(new Identifier("limbo:dimension"))) {
+        if (MinecraftClient.getInstance().world.getRegistryKey().getValue().equals(new Identifier("limbo:limbo"))) {
             RenderHelper.render_sky_eye(matrices);
             ci.cancel();
         }

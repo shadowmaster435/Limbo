@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "W": {
+      "item": "limbo:tenebra_twig"
+    },
+    "#": {
+      "item": "limbo:tenebra_planks"
+    }
+  },
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "result": {
+    "count": 1,
+    "id": "limbo:tenebra_fence_gate"
+  }
+}

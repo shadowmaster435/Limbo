@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "limbo:block/tenebra_stairs",
+    "side": "limbo:block/tenebra_stairs",
+    "top": "limbo:block/tenebra_stairs"
+  }
+}

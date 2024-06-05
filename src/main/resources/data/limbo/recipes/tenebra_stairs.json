@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+
+    "W": {
+      "item": "limbo:tenebra_planks"
+    }
+  },
+  "pattern": [
+    "W  ",
+    "WW ",
+    "WWW"
+  ],
+  "result": {
+    "count": 4,
+    "id": "limbo:tenebra_stairs"
+  }
+}

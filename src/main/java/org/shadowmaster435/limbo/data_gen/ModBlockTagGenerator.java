@@ -14,6 +14,8 @@ import java.util.concurrent.CompletableFuture;
 public class ModBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
     private static final TagKey<Block> AXE_EFFECTIVE = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/axe"));
     private static final TagKey<Block> PICKAXE_EFFECTIVE = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:mineable/pickaxe"));
+    private static final TagKey<Block> FENCES = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:fences"));
+    private static final TagKey<Block> WOODEN_FENCES = TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:wooden_fences"));
 
     public ModBlockTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
         super(output, completableFuture);
@@ -24,12 +26,21 @@ public class ModBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
 
         axe(getOrCreateTagBuilder(AXE_EFFECTIVE));
         pickaxe(getOrCreateTagBuilder(PICKAXE_EFFECTIVE));
+        fences(getOrCreateTagBuilder(FENCES));
+        fences(getOrCreateTagBuilder(WOODEN_FENCES));
 
     }
 
     public void pickaxe(FabricTagBuilder builder) {
         for (String id_str : ModBlocks.any_pickaxe_effective.keySet()) {
             var entry = ModBlocks.any_pickaxe_effective.get(id_str);
+            builder.add(entry);
+        }
+        builder.setReplace(false);
+    }
+    public void fences(FabricTagBuilder builder) {
+        for (String id_str : ModBlocks.fences.keySet()) {
+            var entry = ModBlocks.fences.get(id_str);
             builder.add(entry);
         }
         builder.setReplace(false);

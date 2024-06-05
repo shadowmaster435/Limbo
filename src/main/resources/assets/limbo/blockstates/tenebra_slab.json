@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "limbo:block/tenebra_slab_bottom"
+    },
+    "type=double": {
+      "model": "limbo:block/tenebra_slab_full"
+    },
+    "type=top": {
+      "model": "limbo:block/tenebra_slab_top"
+    }
+  }
+}

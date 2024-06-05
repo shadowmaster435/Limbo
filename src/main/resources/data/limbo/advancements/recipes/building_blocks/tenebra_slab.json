@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tenebra_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "limbo:tenebra_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "limbo:tenebra_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tenebra_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "limbo:tenebra_slab"
+    ]
+  }
+}

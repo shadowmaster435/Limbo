@@ -8,6 +8,15 @@
   "block.limbo.illuminum_light": "Illuminum Light",
   "block.limbo.tenebra_crafting_table": "Tenebra Crafting Table",
   "block.limbo.tenebra_sapling": "Tenebra Sapling",
+  "block.limbo.stripped_tenebra_log": "Stripped Tenebra Log",
+  "block.limbo.stripped_tenebra_wood": "Stripped Tenebra Wood",
+  "block.limbo.tenebra_door": "Tenebra Door",
+  "block.limbo.tenebra_fence": "Tenebra Fence",
+  "block.limbo.tenebra_fence_gate": "Tenebra Fence Gate",
+  "block.limbo.tenebra_slab": "Tenebra Slab",
+  "block.limbo.tenebra_stairs": "Tenebra Stairs",
+  "block.limbo.tenebra_wood": "Tenebra Wood",
+
 
   "entity.limbo.monolith": "Monolith",
 
