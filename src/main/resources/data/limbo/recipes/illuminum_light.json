@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R",
+    "W"
+  ],
+  "key": {
+    "W": {
+      "item": "limbo:tenebra_twig"
+    },
+    "R": {
+      "item": "limbo:illuminum"
+    }
+  },
+  "result": {
+    "id": "limbo:illuminum_light",
+    "count": 4
+  }
+}

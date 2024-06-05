@@ -1,0 +1,22 @@
+{
+  "block.limbo.silhouetted_soil": "Silhouetted Soil",
+  "block.limbo.silhouetted_grass_block": "Silhouetted Grass",
+  "block.limbo.silhouetted_stone": "Silhouetted Stone",
+  "block.limbo.tenebra_log": "Tenebra Log",
+  "block.limbo.tenebra_leaves": "Tenebra Leaves",
+  "block.limbo.tenebra_planks": "Tenebra Planks",
+  "block.limbo.illuminum_light": "Illuminum Light",
+  "block.limbo.tenebra_crafting_table": "Tenebra Crafting Table",
+  "block.limbo.tenebra_sapling": "Tenebra Sapling",
+
+  "entity.limbo.monolith": "Monolith",
+
+
+  "item.limbo.tenebra_twig": "Tenebra Twig",
+  "item.limbo.illuminum": "Illuminum",
+
+
+  "menu.limbo": "Play",
+  "menu.limboquit": "Quit"
+
+}

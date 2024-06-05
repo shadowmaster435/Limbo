@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "limbo:tenebra_planks",
+    "limbo:tenebra_log",
+    "limbo:tenebra_crafting_table",
+    "limbo:stripped_tenebra_wood",
+    "limbo:tenebra_wood",
+    "limbo:stripped_tenebra_log",
+    "limbo:tenebra_fence",
+    "limbo:tenebra_log",
+    "limbo:tenebra_fence_gate",
+    "limbo:tenebra_door"
+  ]
+}

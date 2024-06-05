@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "limbo:block/illuminum_light_wall"
+    },
+    "facing=west": {
+      "model": "limbo:block/illuminum_light_wall",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "limbo:block/illuminum_light_wall",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "limbo:block/illuminum_light_wall",
+      "y": 270
+    },
+    "facing=down": {
+      "model": "limbo:block/illuminum_light"
+    }
+  }
+}

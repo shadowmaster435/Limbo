@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "limbo:block/silhouetted_grass_block_top",
+    "side": "limbo:block/silhouetted_grass_block_side",
+    "bottom": "limbo:block/silhouetted_soil"
+  }
+}

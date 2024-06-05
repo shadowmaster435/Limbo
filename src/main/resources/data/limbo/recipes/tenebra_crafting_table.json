@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WW",
+    "WW"
+  ],
+  "key": {
+    "W": {
+      "item": "limbo:tenebra_planks"
+    }
+  },
+  "result": {
+    "id": "limbo:tenebra_crafting_table",
+    "count": 1
+  }
+}

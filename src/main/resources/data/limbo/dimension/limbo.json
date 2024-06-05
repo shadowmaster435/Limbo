@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "limbo:settings",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+       
+        {
+          "biome": "limbo:tenebra_forest",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 1,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

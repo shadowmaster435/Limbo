@@ -1,0 +1,17 @@
+{
+  "targets": [
+    "swap",
+  ],
+  "passes": [
+    {
+      "name": "limbo:test",
+      "intarget": "final",
+      "outtarget": "swap"
+    },
+    {
+      "name": "blit",
+      "intarget": "swap",
+      "outtarget": "final"
+    }
+  ]
+}

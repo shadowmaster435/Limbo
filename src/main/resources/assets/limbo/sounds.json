@@ -1,0 +1,57 @@
+{
+  "portal_open": {
+    "sounds": [
+      "limbo:portal_open"
+    ]
+  },
+  "portal_close": {
+    "sounds": [
+      "limbo:portal_close"
+    ]
+  },
+  "monolith_hurt": {
+    "sounds": [
+      "limbo:monolith/monolith_hurt"
+    ]
+  },
+  "monolith_stare": {
+    "sounds": [
+      "limbo:monolith/monolith_stare"
+    ]
+  },
+  "eye_saw_you": {
+    "sounds": [
+      "limbo:eye_saw_you"
+    ]
+  },
+  "limbosoil_break": {
+    "sounds": [
+      "limbo:break/limbosoil_0",
+      "limbo:break/limbosoil_1",
+      "limbo:break/limbosoil_2",
+      "limbo:break/limbosoil_3"
+    ]
+  },
+  "limbosoil_step": {
+    "sounds": [
+      "limbo:step/limbosoil_0",
+      "limbo:step/limbosoil_1",
+      "limbo:step/limbosoil_2",
+      "limbo:step/limbosoil_3"
+    ]
+  },
+  "limbostone_break": {
+    "sounds": [
+      "limbo:break/limbostone_1",
+      "limbo:break/limbostone_2",
+      "limbo:break/limbostone_3"
+    ]
+  },
+  "limbostone_step": {
+    "sounds": [
+      "limbo:step/limbostone_1",
+      "limbo:step/limbostone_2",
+      "limbo:step/limbostone_3"
+    ]
+  }
+}

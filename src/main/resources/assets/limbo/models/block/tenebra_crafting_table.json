@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "side": "limbo:block/tenebra_crafting_table_side",
+    "top": "limbo:block/tenebra_crafting_table_top",
+    "bottom": "limbo:block/tenebra_crafting_table_bottom"
+
+  }
+}

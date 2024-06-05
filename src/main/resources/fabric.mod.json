@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "limbo",
+  "version": "${version}",
+  "name": "Limbo",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/shado/Limbo"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/limbo/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.shadowmaster435.limbo.init.ModDataGenerators"
+    ],
+    "client": [
+      "org.shadowmaster435.limbo.client.LimboClient"
+    ],
+    "main": [
+      "org.shadowmaster435.limbo.Limbo"
+    ]
+  },
+  "mixins": [
+    "limbo.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "accessWidener" : "limbo.accesswidener"
+
+}

@@ -1,0 +1,27 @@
+{
+  "type": "limbo:tenebra_tree",
+  "config": {
+    "trunk_height": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 4,
+      "max_inclusive": 10
+    },
+    "trunk_size": {
+      "type": "minecraft:uniform",
+      "min_inclusive": 1,
+      "max_inclusive": 2
+    },
+    "logs": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "limbo:tenebra_log"
+      }
+    },
+    "leaves": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "limbo:tenebra_leaves"
+      }
+    }
+  }
+}

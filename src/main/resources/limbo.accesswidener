@@ -1,0 +1,8 @@
+accessWidener v2 named
+
+
+accessible method net/minecraft/client/gui/screen/Screen addDrawableChild (Lnet/minecraft/client/gui/Element;)Lnet/minecraft/client/gui/Element;
+accessible field net/minecraft/client/gui/screen/Screen drawables Ljava/util/List;
+accessible method net/minecraft/server/integrated/IntegratedServerLoader start (Lnet/minecraft/world/level/storage/LevelStorage$Session;Lnet/minecraft/server/SaveLoader;Lnet/minecraft/resource/ResourcePackManager;)V
+accessible field net/minecraft/screen/CraftingScreenHandler context Lnet/minecraft/screen/ScreenHandlerContext;
+accessible method net/minecraft/screen/ScreenHandler canUse (Lnet/minecraft/screen/ScreenHandlerContext;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/block/Block;)Z

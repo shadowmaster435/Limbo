@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "limbo:tenebra_log"
+    }
+  ],
+  "result": {
+    "id": "limbo:tenebra_planks",
+    "count": 4
+  }
+}
