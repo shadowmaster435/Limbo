@@ -87,8 +87,6 @@ public class RenderHelper {
 
     }
 
-    public static void textured_quad(Vector3f pos, Vector2f size, SpriteIdentifier spr, int light, MatrixStack matrices, VertexConsumerProvider vertexConsumers) {
-   }
 
     public static void textured_quad(Vector3f pos, Vector2f size, Identifier spr, int light, Matrix4f mat) {
         var tess = Tessellator.getInstance();

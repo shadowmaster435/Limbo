@@ -4,6 +4,7 @@ import net.minecraft.client.model.Model;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
+import org.shadowmaster435.limbo.Limbo;
 import org.shadowmaster435.limbo.util.block_entity.AnimatedBlockEntity;
 
 import java.util.Objects;
@@ -19,7 +20,7 @@ public abstract class BlockEntityModel<T extends AnimatedBlockEntity> extends Mo
 
     protected BlockEntityModel(Function<Identifier, RenderLayer> function, @Nullable Identifier texture) {
         super(function);
-        this.texture = Objects.requireNonNullElseGet(texture, () -> new Identifier("limbo:textures/block/missing.png"));
+        this.texture = Objects.requireNonNullElseGet(texture, () -> new Identifier(Limbo.id, "textures/block/missing.png"));
     }
 
     public <A extends AnimatedBlockEntity> void animateModel(A entity, float tickDelta) {

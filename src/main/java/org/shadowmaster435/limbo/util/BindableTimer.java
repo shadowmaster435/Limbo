@@ -1,6 +1,10 @@
 package org.shadowmaster435.limbo.util;
 
 import net.minecraft.util.math.MathHelper;
+import org.shadowmaster435.limbo.util.render.util.VertexFunction;
+import org.shadowmaster435.limbo.util.render.util.VertexGroupFunction;
+
+import java.util.ArrayList;
 
 public class BindableTimer extends Timer {
     
@@ -21,6 +25,14 @@ public class BindableTimer extends Timer {
         this.invert_delta = false;
         this.min_value = 0;
         this.max_value = 1;
+        ArrayList<Vector3> verts = new ArrayList<>();
+        var func = new VertexFunction(index -> new Vector3(index, 0,0));
+        var f = new VertexGroupFunction(verts, func);
+        f.run();
+    }
+
+    public Vector3 funcs(int a) {
+        return Vector3.ZERO;
     }
 
     public BindableTimer(String field_name, boolean invert_delta) {

@@ -17,31 +17,35 @@ import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import org.shadowmaster435.limbo.Limbo;
 import org.shadowmaster435.limbo.block.GlitchBlock;
 import org.shadowmaster435.limbo.block.IlluminumLightBlock;
+import org.shadowmaster435.limbo.block.LuminatorBlock;
 import org.shadowmaster435.limbo.block.ModelTest;
 import org.shadowmaster435.limbo.block.base.AbstractCraftingTableBlock;
 import org.shadowmaster435.limbo.block.entity.GlitchBlockEntity;
+import org.shadowmaster435.limbo.block.entity.LuminatorEntity;
 import org.shadowmaster435.limbo.block.entity.ModelTestEntity;
 import org.shadowmaster435.limbo.block.entity.renderer.GlitchBlockRenderer;
+import org.shadowmaster435.limbo.block.entity.renderer.LuminatorRenderer;
 import org.shadowmaster435.limbo.block.entity.renderer.ModelTestRenderer;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 
 public class ModBlocks {
-
+    //region Vars
     public static final GlitchBlock GLITCH_BLOCK = new GlitchBlock(AbstractBlock.Settings.create().sounds(ModBlockSoundGroups.LIMBO_STONE).strength(0f).nonOpaque().noCollision());
     public static BlockEntityType<GlitchBlockEntity> GLITCH_BLOCK_ENTITY;
 
     public static final SaplingGenerator TENEBRA = new SaplingGenerator(
             "tenebra", Optional.empty(), Optional.of(ConfiguredFeatures.of("limbo:tenebra_tree")), Optional.of(ConfiguredFeatures.of("limbo:tenebra_tree"))
-    );
+    ); // feature needs tweaking to avoid leaf decay
 
     public static final ModelTest MODEL_TEST = new ModelTest(AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).nonOpaque().burnable().strength(0.2f));
     public static final IlluminumLightBlock ILLUMINUM_LIGHT = new IlluminumLightBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD).breakInstantly().nonOpaque().noCollision().luminance(a -> 12).strength(0.01f));
     public static final AbstractCraftingTableBlock TENEBRA_CRAFTING_TABLE = new AbstractCraftingTableBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD).burnable().strength(2f));
-    public static final SaplingBlock TENEBRA_SAPLING = new SaplingBlock(TENEBRA, AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).burnable().strength(0.01f));
+    public static final SaplingBlock TENEBRA_SAPLING = new SaplingBlock(TENEBRA, AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).burnable().noCollision().strength(0.01f));
+
+    public static final LuminatorBlock LUMINATOR_BLOCK = new LuminatorBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).nonOpaque().burnable().strength(0.2f));
+
 
     public static HashMap<String, Block> auto_reg = new HashMap<>();
     public static HashMap<String, Block> self_drop = new HashMap<>();
@@ -69,10 +73,9 @@ public class ModBlocks {
 
 
     public static BlockEntityType<ModelTestEntity> MODEL_TEST_ENT;
-
-
-    //   public static final GlitchBlock vanish_test = new GlitchBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.CROP).strength(0f).nonOpaque().noCollision());
-
+    public static BlockEntityType<LuminatorEntity> LUMINATOR_BLOCK_ENTITY;
+    //endregion
+    //region Registry
     public static void register() {
         var wood_settings = AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD).burnable().strength(2f);
         var leaf_settings = AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).nonOpaque().burnable().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never).strength(0.2f);
@@ -83,6 +86,7 @@ public class ModBlocks {
         register_one_texture_block("silhouetted_stone", AbstractBlock.Settings.create().sounds(ModBlockSoundGroups.LIMBO_STONE).requiresTool().requiresTool().strength(1.5F, 6.0F));
         register_leaves("tenebra_leaves", leaf_settings);
         register_one_texture_block("tenebra_planks", wood_settings);
+
         create_wood_blocks("tenebra");
 
         Registry.register(Registries.BLOCK, new Identifier(Limbo.id, "tenebra_crafting_table"), TENEBRA_CRAFTING_TABLE);
@@ -93,6 +97,8 @@ public class ModBlocks {
         Registry.register(Registries.ITEM, new Identifier(Limbo.id, "tenebra_sapling"), new BlockItem(TENEBRA_SAPLING, new Item.Settings()));
         Registry.register(Registries.BLOCK, new Identifier(Limbo.id, "model_test"), MODEL_TEST);
         Registry.register(Registries.ITEM, new Identifier(Limbo.id, "model_test"), new BlockItem(MODEL_TEST, new Item.Settings()));
+        Registry.register(Registries.BLOCK, new Identifier(Limbo.id, "luminator"), LUMINATOR_BLOCK);
+        Registry.register(Registries.ITEM, new Identifier(Limbo.id, "luminator"), new BlockItem(LUMINATOR_BLOCK, new Item.Settings()));
 
         add_manual(TENEBRA_CRAFTING_TABLE, "side_top_bottom");
 
@@ -102,6 +108,7 @@ public class ModBlocks {
             return;
         }
         MODEL_TEST_ENT = Registry.register(Registries.BLOCK_ENTITY_TYPE, Limbo.id + ":" + "model_test", BlockEntityType.Builder.create(ModelTestEntity::new, MODEL_TEST).build(null));
+        LUMINATOR_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Limbo.id + ":" + "luminator_block_entity", BlockEntityType.Builder.create(LuminatorEntity::new, LUMINATOR_BLOCK).build(null));
 
     }
 
@@ -127,9 +134,11 @@ public class ModBlocks {
     public static void renderer() {
         BlockEntityRendererFactories.register(GLITCH_BLOCK_ENTITY, GlitchBlockRenderer::new);
         BlockEntityRendererFactories.register(MODEL_TEST_ENT, ModelTestRenderer::new);
+        BlockEntityRendererFactories.register(LUMINATOR_BLOCK_ENTITY, LuminatorRenderer::new);
 
     }
-
+    //endregion
+    //region Basic Autoreg
     public static void register_leaves(String name, AbstractBlock.Settings settings) {
         final LeavesBlock BLOCK = new LeavesBlock(settings);
         var id = new Identifier(Limbo.id, name);
@@ -159,6 +168,7 @@ public class ModBlocks {
 
     }
 
+
     public static void register_side_top_bottom(String name, AbstractBlock.Settings settings) {
         final Block BLOCK = new Block(settings);
         var id = new Identifier(Limbo.id, name);
@@ -169,6 +179,8 @@ public class ModBlocks {
 
     }
 
+    //endregion
+    //region Complex Autoreg
     public static void create_wood_blocks(String prefix) {
         var door = new DoorBlock(BlockSetType.OAK, AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD).burnable().strength(2f));
         var log = new PillarBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD).burnable().strength(2f));
@@ -294,6 +306,8 @@ public class ModBlocks {
         slabs.put(slab_id.toString(), slab);
 
     }
+    //endregion
+    //region Utility
     public static String name_from_snake(String snake_case_name) {
         var spaced = snake_case_name.replace("_", " ");
         StringBuilder result = new StringBuilder();
@@ -315,5 +329,5 @@ public class ModBlocks {
     public static Block get_block(Identifier id) {
         return auto_reg.get(id.toString());
     }
-
+    //endregion
 }

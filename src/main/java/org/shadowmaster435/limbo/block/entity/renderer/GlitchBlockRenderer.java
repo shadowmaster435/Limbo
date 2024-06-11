@@ -39,7 +39,6 @@ public class GlitchBlockRenderer implements BlockEntityRenderer<GlitchBlockEntit
         var amp = 0.125;
         var bottom_amp = 0.125;
         var top_amp = (Math.sin(((entity.getWorld()).getTime() + tickDelta) * 0.15f) * 0.5 ) * 0.25;
-
         var vert_dist = 0.0625f;
         var tess = Tessellator.getInstance();
         var buff = vertexConsumers.getBuffer(RenderLayer.getDebugFilledBox());
@@ -92,36 +91,36 @@ public class GlitchBlockRenderer implements BlockEntityRenderer<GlitchBlockEntit
         }
 
     }
-    public void render_eye(GlitchBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers) {
-        var player = MinecraftClient.getInstance().player;
-        var cpos = entity.getPos().toCenterPos();
-        var ppos = MinecraftClient.getInstance().player.getLerpedPos(tickDelta).add(0, MinecraftClient.getInstance().player.getStandingEyeHeight(), 0);
-        var pitch = player.getPitch(tickDelta);
-        var yaw = player.getYaw(tickDelta);
-        var rot_vec = ModMathHelper.get_rotation_vector(yaw - 90, pitch  );
-        var subbed_pos = ppos.subtract(cpos).toVector3f().add(rot_vec.toVector3f());
-
-        var eased = 1f - Easing.SINE_IN_OUT.ease(MathHelper.clamp(entity.eye_delta, 0f, 60f), 0f, 1f, 60f);
-        var lerped = ppos.lerp(dispatcher.camera.getPos(), eased);
-        // System.out.println(rot_vec);
-        RenderSystem.disableDepthTest();
-        matrices.push();
-        var max_ofs = 0.0625f / 2;
-        var randofs = new Vector3f(MathHelper.nextFloat(Random.createLocal(), -max_ofs, max_ofs),MathHelper.nextFloat(Random.createLocal(), -max_ofs, max_ofs),MathHelper.nextFloat(Random.createLocal(), -max_ofs, max_ofs)).mul(eased);
-        matrices.translate(randofs.x,randofs.y,randofs.z);
-        matrices.translate(0.5,0.5,0.5);
-        RenderHelper.face_matrix_towards(cpos, lerped, matrices);
-        matrices.scale(1 -entity.orb_scale,1 -entity.orb_scale,1 -entity.orb_scale);
-        var eye_tex_delta = Easing.SINE_IN_OUT.ease(MathHelper.clamp(entity.eye_delta, 0f, 60f), 0f, 1f, 60f);
-        var acutal_spr = (entity.eye_saw_you) ? eyes[Math.min((int) Math.floor(eased * 5), 4)] : spr;
-        RenderHelper.textured_quad(new Vector3f(-0.5f, 0, -0.5f), new Vector2f(1,1), acutal_spr, 162000, matrices, vertexConsumers);
-        matrices.pop();
-        CollapseOrbDepthFX.INSTANCE.static_influence.set(entity.static_influence);
-        CollapseOrbDepthFX.INSTANCE.floor_tex.set(ModResourceLoader.shader_textures.get("limbo:textures/shader/portal_floor.png"));
-        CollapseOrbDepthFX.INSTANCE.uniformCenter.set(entity.getPos().toCenterPos().toVector3f());
-        CollapseOrbDepthFX.INSTANCE.orb_scale.set(entity.orb_scale);
-        CollapseOrbDepthFX.INSTANCE.eye_delta.set(eased);
-
-    }
+//    public void render_eye(GlitchBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers) {
+//        var player = MinecraftClient.getInstance().player;
+//        var cpos = entity.getPos().toCenterPos();
+//        var ppos = MinecraftClient.getInstance().player.getLerpedPos(tickDelta).add(0, MinecraftClient.getInstance().player.getStandingEyeHeight(), 0);
+//        var pitch = player.getPitch(tickDelta);
+//        var yaw = player.getYaw(tickDelta);
+//        var rot_vec = ModMathHelper.get_rotation_vector(yaw - 90, pitch  );
+//        var subbed_pos = ppos.subtract(cpos).toVector3f().add(rot_vec.toVector3f());
+//
+//        var eased = 1f - Easing.SINE_IN_OUT.ease(MathHelper.clamp(entity.eye_delta, 0f, 60f), 0f, 1f, 60f);
+//        var lerped = ppos.lerp(dispatcher.camera.getPos(), eased);
+//        // System.out.println(rot_vec);
+//        RenderSystem.disableDepthTest();
+//        matrices.push();
+//        var max_ofs = 0.0625f / 2;
+//        var randofs = new Vector3f(MathHelper.nextFloat(Random.createLocal(), -max_ofs, max_ofs),MathHelper.nextFloat(Random.createLocal(), -max_ofs, max_ofs),MathHelper.nextFloat(Random.createLocal(), -max_ofs, max_ofs)).mul(eased);
+//        matrices.translate(randofs.x,randofs.y,randofs.z);
+//        matrices.translate(0.5,0.5,0.5);
+//        RenderHelper.face_matrix_towards(cpos, lerped, matrices);
+//        matrices.scale(1 -entity.orb_scale,1 -entity.orb_scale,1 -entity.orb_scale);
+//        var eye_tex_delta = Easing.SINE_IN_OUT.ease(MathHelper.clamp(entity.eye_delta, 0f, 60f), 0f, 1f, 60f);
+//        var acutal_spr = (entity.eye_saw_you) ? eyes[Math.min((int) Math.floor(eased * 5), 4)] : spr;
+//        RenderHelper.textured_quad(new Vector3f(-0.5f, 0, -0.5f), new Vector2f(1,1), acutal_spr, 162000, matrices, vertexConsumers);
+//        matrices.pop();
+//        CollapseOrbDepthFX.INSTANCE.static_influence.set(entity.static_influence);
+//        CollapseOrbDepthFX.INSTANCE.floor_tex.set(ModResourceLoader.shader_textures.get("limbo:textures/shader/portal_floor.png"));
+//        CollapseOrbDepthFX.INSTANCE.uniformCenter.set(entity.getPos().toCenterPos().toVector3f());
+//        CollapseOrbDepthFX.INSTANCE.orb_scale.set(entity.orb_scale);
+//        CollapseOrbDepthFX.INSTANCE.eye_delta.set(eased);
+//
+//    }
 
 }

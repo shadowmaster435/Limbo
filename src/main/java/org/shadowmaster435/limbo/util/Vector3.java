@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import static java.lang.Math.*;
 
-public class Vector3 extends Vec3d {
+public class Vector3 extends Vector3f {
     public static final Vector3 ZERO = new Vector3(0.0,0.0,0.0);
 
     public static final Vector3 ONE = new Vector3(1.0,1.0,1.0);
@@ -19,20 +19,23 @@ public class Vector3 extends Vec3d {
     }
 
     public Vector3(double all) {
-        super(all, all, all);
+        super((float) all, (float) all, (float) all);
     }
 
     public Vector3(Vec3d vec) {
-        super(vec.getX(), vec.getY(), vec.getZ());
+        super((float) vec.x, (float) vec.y, (float) vec.z);
     }
 
     public Vector3(Vec3i vec) {
-        super(vec.getX(), vec.getY(), vec.getZ());
+        super(vec.getZ(), vec.getY(), vec.getZ());
+    }
+
+    public Vector3() {
     }
 
     @Override
     public Vector3 negate() {
-        return new Vector3(this.multiply(-1.0));
+        return new Vector3(this.mul(-1.0));
     }
 
     public Vector3(Vector3f vec) {
@@ -48,22 +51,22 @@ public class Vector3 extends Vec3d {
     }
 
     public Vector3 mul(Vector3 other) {
-        return new Vector3(multiply(other));
+        return new Vector3(this.to_3f().mul(other));
     }
     public Vector3 mul(float other) {
-        return new Vector3(multiply(other));
+        return  new Vector3(this.to_3f().mul(other));
     }
     public Vector3 mul(double other) {
-        return new Vector3(multiply(other));
+        return new Vector3(this.to_3f().mul((float) other));
     }
     public Vector3 mul(int other) {
-        return new Vector3(multiply(other));
+        return new Vector3(this.to_3f().mul((float) other));
     }
 
     public Vector3 div(Vector3 other) {
-        var x = max(this.x, 0.001) / max(other.x, 0.001);
-        var y = max(this.y, 0.001) / max(other.y, 0.001);
-        var z = max(this.z, 0.001) / max(other.z, 0.001);
+        var x = Math.max(this.x, 0.001) / Math.max(other.x, 0.001);
+        var y = Math.max(this.y, 0.001) / Math.max(other.y, 0.001);
+        var z = Math.max(this.z, 0.001) / Math.max(other.z, 0.001);
         return new Vector3(x, y, z);
     }
 
@@ -84,10 +87,10 @@ public class Vector3 extends Vec3d {
 
 
     public Vector3(Vector3d vec) {
-        super(vec.x, vec.y, vec.z);
+        super((float) vec.x, (float) vec.y, (float) vec.z);
     }
     public Vector3(double x, double y, double z) {
-        super(x, y, z);
+        super((float) x, (float) y, (float) z);
     }
     private Vector3d to_joml() {
         return new Vector3d(x, y, z);
@@ -103,24 +106,24 @@ public class Vector3 extends Vec3d {
 
     
     public Vector3 with_x(double x) {
-        return new Vector3(x, getY(), getZ());
+        return new Vector3(x, y(), z());
     }
     public Vector3 with_y(double y) {
-        return new Vector3(getX(), y, getZ());
+        return new Vector3(x(), y, z());
     }
     public Vector3 with_z(double z) {
-        return new Vector3(getX(), getY(), z);
+        return new Vector3(x(), y(), z);
     }
 
 
     public Vector3 add_x(double x) {
-        return new Vector3(getX() + x, getY(), getZ());
+        return new Vector3(x() + x, y(), z());
     }
     public Vector3 add_y(double y) {
-        return new Vector3(getX(), getY() + y, getZ());
+        return new Vector3(x(), y() + y, z());
     }
     public Vector3 add_z(double z) {
-        return new Vector3(getX(), getY(), getZ() + z);
+        return new Vector3(x(), y(), z() + z);
     }
 
     public Vector3 with_axis(Direction.Axis axis, double h, double v) {
@@ -173,7 +176,7 @@ public class Vector3 extends Vec3d {
         return new Vector3(this.add(max_ofs.negate())).lerp(new Vector3(this.add(max_ofs)), new Vector3(x, y, z));
     }
 
-    public Vector3 lerp(Vector3 to, double delta) {
+    public Vector3 lerp(Vector3 to, float delta) {
         return new Vector3(super.lerp(to, delta));
     }
     public Vector3 lerp(Vector3 to, Vector3 delta) {

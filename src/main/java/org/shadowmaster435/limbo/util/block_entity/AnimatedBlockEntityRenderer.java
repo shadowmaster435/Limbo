@@ -12,14 +12,13 @@ public interface AnimatedBlockEntityRenderer<T extends AnimatedBlockEntity> exte
         var model = entity.getModel();
         var anim = entity.get_current_animation();
         if (model != null) {
-
+            matrices.scale(1, -1, 1);
+            matrices.translate(0.5,-1.5f,0.5);
             model.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(entity.getModel().get_texture())), light, overlay, 1f, 1f, 1f, 1f);
-           // model.animateModel(entity, tickDelta);
+
             if (anim != null) {
                 model.updateAnimation(entity.animation_state, entity.get_current_animation(), entity.get_animation_counter() + tickDelta);
-               // model.animate(anim, entity.get_animation_counter());
             }
-        //    model.getPart().traverse().forEach(ModelPart::resetTransform);
 
         }
 
