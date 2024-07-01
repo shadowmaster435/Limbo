@@ -6,3 +6,6 @@ accessible field net/minecraft/client/gui/screen/Screen drawables Ljava/util/Lis
 accessible method net/minecraft/server/integrated/IntegratedServerLoader start (Lnet/minecraft/world/level/storage/LevelStorage$Session;Lnet/minecraft/server/SaveLoader;Lnet/minecraft/resource/ResourcePackManager;)V
 accessible field net/minecraft/screen/CraftingScreenHandler context Lnet/minecraft/screen/ScreenHandlerContext;
 accessible method net/minecraft/screen/ScreenHandler canUse (Lnet/minecraft/screen/ScreenHandlerContext;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/block/Block;)Z
+accessible method net/minecraft/data/client/Models make ([Lnet/minecraft/data/client/TextureKey;)Lnet/minecraft/data/client/Model;
+accessible method net/minecraft/client/gui/DrawContext drawSprite (Lnet/minecraft/client/texture/Sprite;Lnet/minecraft/client/texture/Scaling$NineSlice;IIIII)V
+accessible method net/minecraft/client/render/Camera setPos (Lnet/minecraft/util/math/Vec3d;)V

@@ -14,9 +14,8 @@ import org.shadowmaster435.limbo.init.ModBlocks;
 public class GlitchBlock extends BlockWithEntity {
 
 
-    public static final MapCodec<GlitchBlock> CODEC = createCodec(GlitchBlock::new);
 
-    public GlitchBlock(AbstractBlock.Settings settings) {
+    public GlitchBlock(Settings settings) {
         super(settings);
     }
 

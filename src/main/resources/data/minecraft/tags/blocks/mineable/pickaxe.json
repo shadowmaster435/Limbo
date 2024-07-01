@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
-    "limbo:silhouetted_stone"
+    "limbo:silhouetted_stone",
+    "limbo:silhouetted_stone_brick_stairs",
+    "limbo:silhouetted_stone_brick_slab",
+    "limbo:silhouetted_cobblestone_stairs",
+    "limbo:silhouetted_cobblestone_slab",
+    "limbo:silhouetted_cobblestone",
+    "limbo:silhouetted_stone_bricks",
+    "limbo:glumstone",
+    "limbo:glumstone_lamp"
   ]
 }

@@ -1,13 +1,16 @@
 package org.shadowmaster435.limbo.util;
 
+import net.minecraft.client.render.Camera;
+import org.shadowmaster435.limbo.util.callable.Callable;
+
 public class Timer {
 
     private long start_tick = 0;
     public int ticks_left = 0;
-
+    public boolean started = false;
     public int wait_ticks;
     private boolean finished = false;
-
+    public Callable on_timeout = null;
     public boolean repeating = false;
 
     public Timer() {
@@ -21,6 +24,10 @@ public class Timer {
         repeating = repeat;
     }
 
+    public void bind_timeout(Object caller, String method_name, Class<?> args) {
+        on_timeout = new Callable(caller, method_name, args);
+    }
+
     public boolean timeout() {
         return ticks_left <= 0;
     }
@@ -31,6 +38,10 @@ public class Timer {
                 start(wait_ticks);
             } else {
                 finished = true;
+                started = false;
+            }
+            if (on_timeout != null) {
+                on_timeout.call();
             }
         } else {
             ticks_left -= 1;
@@ -53,6 +64,7 @@ public class Timer {
         ticks_left = ticks;
         wait_ticks = ticks;
         finished = false;
+        started = true;
     }
     public void start() {
         ticks_left = wait_ticks;

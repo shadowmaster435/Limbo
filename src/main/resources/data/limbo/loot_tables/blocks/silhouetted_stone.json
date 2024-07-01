@@ -28,7 +28,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "limbo:silhouetted_soil",
+              "name": "limbo:silhouetted_cobblestone",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"

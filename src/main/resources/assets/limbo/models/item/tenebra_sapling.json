@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "limbo:item/tenebra_sapling"
+    "layer0": "limbo:block/tenebra_sapling"
   }
 }

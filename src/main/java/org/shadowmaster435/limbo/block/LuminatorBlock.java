@@ -8,12 +8,11 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 import org.shadowmaster435.limbo.block.entity.LuminatorEntity;
-import org.shadowmaster435.limbo.block.entity.ModelTestEntity;
+import org.shadowmaster435.limbo.block.entity.renderer.LuminatorRenderer;
 
 public class LuminatorBlock extends BlockWithEntity {
 
 
-    public static final MapCodec<GlitchBlock> CODEC = createCodec(GlitchBlock::new);
 
     public LuminatorBlock(Settings settings) {
         super(settings);
@@ -29,6 +28,9 @@ public class LuminatorBlock extends BlockWithEntity {
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new LuminatorEntity(pos, state);
     }
+
+
+
 
     @Override
     public BlockRenderType getRenderType(BlockState state) {

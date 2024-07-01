@@ -1,0 +1,22 @@
+{
+  "temperature": 0,
+  "downfall": 0,
+  "has_precipitation": false,
+  "effects": {
+    "sky_color": 0,
+    "fog_color": 0,
+    "water_color": 0,
+    "water_fog_color": 0,
+    "grass_color": 0,
+    "music": {
+      "sound": "limbo:somewhere",
+      "min_delay": 0,
+      "max_delay": 0,
+      "replace_current_music": true
+    }
+  },
+  "spawners": {},
+  "spawn_costs": {},
+  "carvers": {},
+  "features": []
+}

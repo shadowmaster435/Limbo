@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:add",
+  "argument1": "limbo:fracture_island_density",
+  "argument2": "limbo:fracture_density"
+}

@@ -11,6 +11,7 @@
     "IntegratedServerLoaderMixin",
     "LevelLoadingScreenMixin",
     "MessageScreenMixin",
+    "ShaderProgramMixin",
     "TitleScreenMixin",
     "WorldRendererMixin"
   ],

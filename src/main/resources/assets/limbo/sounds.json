@@ -9,6 +9,26 @@
       "limbo:portal_close"
     ]
   },
+  "monolith_ground_hit": {
+    "sounds": [
+      "limbo:monolith/monolith_ground_hit"
+    ]
+  },
+  "somewhere": {
+    "sounds": [
+      "limbo:music/somewhere"
+    ]
+  },
+  "monolith_deactivate": {
+    "sounds": [
+      "limbo:monolith/monolith_deactivate"
+    ]
+  },
+  "monolith_death": {
+    "sounds": [
+      "limbo:monolith/monolith_death"
+    ]
+  },
   "monolith_hurt": {
     "sounds": [
       "limbo:monolith/monolith_hurt"

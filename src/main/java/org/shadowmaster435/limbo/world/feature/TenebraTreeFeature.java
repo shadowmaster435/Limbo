@@ -3,6 +3,7 @@ package org.shadowmaster435.limbo.world.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
@@ -33,30 +34,20 @@ public class TenebraTreeFeature extends Feature<TenebraTreeFeatureConfig> {
         if (log_state == null) throw new IllegalStateException(" could not be parsed to a valid block identifier!");
         if (leaf_state == null) throw new IllegalStateException(" could not be parsed to a valid block identifier!");
         var rand_ofs = random.nextDouble() * 100;
-        for (int x = 0; x < trunk_size * 16; ++x) {
+        for (int x = trunk_size * -6; x < trunk_size * 12; ++x) {
             for (int y = 0; y < trunk_height; y++) {
-                for (int z = 0; z < trunk_size * 16; ++z) {
+                for (int z = trunk_size * -6; z < trunk_size * 12; ++z) {
                     var pos = new BlockPos(x, y, z).add(origin);
+                    var offset_pos = pos.withY(0).toCenterPos().add(new Vec3d(Math.cos(y + origin.getY() + random.nextDouble() * 2), 0, Math.sin(y + origin.getY() +  random.nextDouble() * 2)));
 
                     if (!world.isAir(pos)) continue;
-
-                    var sine = (Math.sin(y + rand_ofs)) * trunk_size;
-                    var cosine = (Math.cos(y + rand_ofs)) * trunk_size;
-                    var center = new BlockPos((int) Math.floor(cosine), y, (int) Math.floor(sine)).add(origin).add(trunk_size,0,trunk_size);
-                    var dist = pos.toCenterPos().subtract(0.5,0.5,0.5).distanceTo(center.toCenterPos().subtract(0.5,0.5,0.5));
-                    if (dist < trunk_size) {
-                        if (y < trunk_height - 2) {
-                            world.setBlockState(pos,log_state,2);
-
-                        } else {
-                            world.setBlockState(pos,leaf_state,2);
-
-                        }
-                    }
-
-                    if (world.isAir(pos) && y > trunk_height / 3 && dist < (trunk_size * 2) - Random.create((origin.getX() + y + origin.getZ())).nextBetween(0, 4)) {
+                    if (offset_pos.distanceTo(origin.withY(0).toCenterPos()) < 3 - Math.cos(y + origin.getY() + random.nextDouble() * 1.1) && y > trunk_height / 4) {
                         world.setBlockState(pos, leaf_state, 2);
                     }
+                    if (offset_pos.distanceTo(origin.withY(0).toCenterPos()) < trunk_size / 1.2f  && y < trunk_height - 1) {
+                        world.setBlockState(pos, log_state, 2);
+                    }
+
                 }
             }
         }

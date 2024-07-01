@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:range_choice",
+  "input": "minecraft:y",
+  "min_inclusive": -64,
+  "max_exclusive": 70,
+  "when_in_range": {
+    "type": "minecraft:mul",
+    "argument1": {
+      "type": "minecraft:clamp",
+      "input": {
+        "type": "minecraft:noise",
+        "noise": "limbo:patchy",
+        "xz_scale": 1,
+        "y_scale": 1
+      },
+      "min": 0,
+      "max": 1
+    },
+    "argument2": "limbo:fracture_frequency_noise"
+  },
+  "when_out_of_range": -0.01
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "limbo:block/dev",
+    "side": "limbo:block/arrow_block"
+  }
+}

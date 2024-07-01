@@ -1,0 +1,33 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "limbo:block/debug_directional",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "limbo:block/debug_directional",
+      "x": 90,
+
+      "y": 90
+    },
+    "facing=north": {
+      "model": "limbo:block/debug_directional",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "limbo:block/debug_directional",
+      "x": 90,
+
+      "y": 180
+    },
+    "facing=up": {
+      "model": "limbo:block/debug_directional"
+    },
+    "facing=west": {
+      "model": "limbo:block/debug_directional",
+      "x": 90,
+
+      "y": 270
+    }
+  }
+}

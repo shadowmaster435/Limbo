@@ -1,5 +1,6 @@
 package org.shadowmaster435.limbo.block;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockRenderType;
@@ -13,9 +14,7 @@ import org.shadowmaster435.limbo.block.entity.ModelTestEntity;
 public class ModelTest extends BlockWithEntity {
 
 
-    public static final MapCodec<GlitchBlock> CODEC = createCodec(GlitchBlock::new);
-
-    public ModelTest(AbstractBlock.Settings settings) {
+    public ModelTest(Settings settings) {
         super(settings);
     }
 

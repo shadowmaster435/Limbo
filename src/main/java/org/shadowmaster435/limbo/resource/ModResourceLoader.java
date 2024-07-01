@@ -11,11 +11,13 @@ import org.shadowmaster435.limbo.Limbo;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ModResourceLoader {
 
     public static HashMap<String, NativeImageBackedTexture> shader_textures = new HashMap<>();
+    public static HashMap<String, String> shader_includes = new HashMap<>();
     public static void register() {
         ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override
@@ -32,10 +34,18 @@ public class ModResourceLoader {
                     }
                 }
 
+
             }
+
         });
+
     }
 
+    public static void register_shader_includes(InputStream stream, Identifier id) throws IOException {
+        int name_index = id.getPath().lastIndexOf("/") + 1;
+        int extension_index = id.getPath().indexOf(".glsl");
+        shader_includes.put(id.getPath().substring(name_index, extension_index), new String(stream.readAllBytes()));
+    }
 
     public static void register_shader_textures(InputStream stream, Identifier id) throws IOException {
         var img = new NativeImageBackedTexture(NativeImage.read(stream));

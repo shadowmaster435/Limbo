@@ -2,6 +2,7 @@ package org.shadowmaster435.limbo.util;
 
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import org.joml.Vector3f;
 
 
@@ -24,19 +25,27 @@ public class ModMathHelper extends MathHelper {
         return new Vec3d(X, Z, Y);
     }
 
-    public double yaw_towards(Vec3d origin, Vec3d location) {
+    public static double yaw_towards(Vec3d origin, Vec3d location) {
         var sub = origin.subtract(location);
         double dX = sub.x;
         double dZ = sub.z;
+
         return Math.atan2(dZ, dX);
     }
 
-    public double pitch_towards(Vec3d origin, Vec3d location) {
+    public static double pitch_towards(Vec3d origin, Vec3d location) {
         var sub = origin.subtract(location);
         double dX = sub.x;
         double dY = sub.y;
         double dZ = sub.z;
         return Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
+    }
+
+    public static Vector3f next_vector3f(float min_value, float max_value) {
+        var rx = MathHelper.nextFloat(Random.createLocal(), min_value, max_value);
+        var ry = MathHelper.nextFloat(Random.createLocal(), min_value, max_value);
+        var rz = MathHelper.nextFloat(Random.createLocal(), min_value, max_value);
+        return new Vector3f(rx, ry, rz);
     }
 
 

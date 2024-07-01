@@ -17,7 +17,7 @@ public record VertexFunction(Function<Integer, Vector3f> func) {
 
     public Vector3f run(int index) {
         return func.apply(index);
-
+        
     }
 
 }

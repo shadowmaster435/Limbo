@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_silhouetted_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "limbo:silhouetted_cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "limbo:silhouetted_cobblestone_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_silhouetted_cobblestone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "limbo:silhouetted_cobblestone_stairs"
+    ]
+  }
+}

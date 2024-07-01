@@ -1,8 +1,14 @@
 package org.shadowmaster435.limbo.util.render.geo;
 
+import net.minecraft.client.gl.ShaderProgram;
+import net.minecraft.client.render.BufferBuilder;
+import net.minecraft.client.render.Tessellator;
+import net.minecraft.client.render.VertexFormat;
+import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.shadowmaster435.limbo.util.Vector3;
@@ -10,11 +16,34 @@ import org.shadowmaster435.limbo.util.render.util.VertexFunction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.Supplier;
 
 public record TexturedQuadStrip(ArrayList<TexturedQuad> quads) {
 
 
-    public void render(MatrixStack matricies, Identifier texture, int light, int overlay, VertexFunction vertexFunction) {
+    public void bake(BufferBuilder buffer) {
+        for (TexturedQuad quad : quads) {
+            quad.bake(buffer);
+        }
+    }
+
+    public BufferBuilder.BuiltBuffer bake() {
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder buffer = tessellator.getBuffer();
+        buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR_TEXTURE);
+        for (TexturedQuad quad : quads) {
+            quad.bake(buffer);
+        }
+        return buffer.end();
+    }
+
+    public void render(MatrixStack matricies, String texture, int light, int overlay, Supplier<ShaderProgram> program, @Nullable VertexFunction vertexFunction) {
+        for (int i = 0; i < quads.size(); ++i) {
+            var quad = quads.get(i);
+            quad.render(matricies, texture, light, overlay, i, program, vertexFunction);
+        }
+    }
+    public void render(MatrixStack matricies, Identifier texture, int light, int overlay, @Nullable VertexFunction vertexFunction) {
         for (int i = 0; i < quads.size(); ++i) {
             var quad = quads.get(i);
             quad.render(matricies, texture, light, overlay, i, vertexFunction);
@@ -61,10 +90,10 @@ public record TexturedQuadStrip(ArrayList<TexturedQuad> quads) {
         var right_second = right.get(second_index);
         var first_v = MathHelper.lerp(first_v_delta, v.x, v.y);
         var second_v = MathHelper.lerp(second_v_delta, v.x, v.y);
-        var bl = new TexturedQuadVertex(left_first, new Vector2f(u.x, first_v));
-        var br = new TexturedQuadVertex(right_first, new Vector2f(u.y, first_v));
-        var tl = new TexturedQuadVertex(left_second, new Vector2f(u.x, second_v));
-        var tr = new TexturedQuadVertex(right_second, new Vector2f(u.y, second_v));
+        var bl = new TexturedVertex(left_first, new Vector2f(u.x, first_v));
+        var br = new TexturedVertex(right_first, new Vector2f(u.y, first_v));
+        var tl = new TexturedVertex(left_second, new Vector2f(u.x, second_v));
+        var tr = new TexturedVertex(right_second, new Vector2f(u.y, second_v));
         var q = new TexturedQuad(bl, br, tl, tr);
 
         return q;

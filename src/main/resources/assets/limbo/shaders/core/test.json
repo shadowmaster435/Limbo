@@ -1,0 +1,24 @@
+{
+  "blend": {
+    "func": "add",
+    "srcrgb": "srcalpha",
+    "dstrgb": "1-srcalpha"
+  },
+  "vertex": "limbo:test",
+  "fragment": "limbo:test",
+  "samplers": [
+    { "name": "Sampler0" },
+    { "name": "SamplerTest" },
+    { "name": "HMTest" }
+
+  ],
+  "uniforms": [
+    { "name": "ModelViewMat", "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+    { "name": "ProjMat", "type": "matrix4x4", "count": 16, "values": [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0 ] },
+    { "name": "ColorModulate", "type": "float", "count": 4, "values": [ 1.0, 1.0, 1.0, 1.0 ] },
+    { "name": "time", "type": "float", "count": 1, "values": [ 1.0 ] },
+    { "name": "playerpos", "type": "float", "count": 3, "values": [1.0, 1.0, 1.0] },
+    { "name": "Center", "type": "float", "count": 3, "values": [1.0, 1.0, 1.0] }
+
+  ]
+}

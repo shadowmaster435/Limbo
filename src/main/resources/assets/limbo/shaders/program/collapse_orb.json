@@ -10,7 +10,9 @@
   "samplers": [
     { "name": "DiffuseSampler" },
     { "name": "DepthSampler" },
-    { "name": "Floor" }
+    { "name": "Floor" },
+    { "name": "HMTest" }
+
 
   ],
   "uniforms": [

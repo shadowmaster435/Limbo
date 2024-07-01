@@ -1,0 +1,61 @@
+{
+  "type": "minecraft:mul",
+  "argument1": {
+    "type": "minecraft:range_choice",
+    "input": "minecraft:y",
+    "min_inclusive": -64,
+    "max_exclusive": 100,
+    "when_in_range": {
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:interpolated",
+          "argument": {
+            "type": "minecraft:add",
+            "argument1": "minecraft:overworld/base_3d_noise",
+            "argument2": {
+              "type": "minecraft:add",
+              "argument1": {
+                "type": "minecraft:add",
+                "argument1": "minecraft:overworld/depth",
+                "argument2": {
+                  "type": "minecraft:add",
+                  "argument1": {
+                    "type": "minecraft:noise",
+                    "noise": "minecraft:badlands_surface",
+                    "xz_scale": 0.1,
+                    "y_scale": 2
+                  },
+                  "argument2": -0.4
+                }
+              },
+              "argument2": {
+                "type": "minecraft:noise",
+                "noise": "limbo:sparse",
+                "xz_scale": 0.01,
+                "y_scale": 4
+              }
+            }
+          }
+        },
+        "argument2": {
+          "type": "minecraft:y_clamped_gradient",
+          "from_y": 384,
+          "to_y": 64,
+          "from_value": -5,
+          "to_value": 0
+        }
+      },
+      "argument2": {
+        "type": "minecraft:y_clamped_gradient",
+        "from_y": -51,
+        "to_y": -64,
+        "from_value": 0,
+        "to_value": 2
+      }
+    },
+    "when_out_of_range": 0
+  },
+  "argument2": 1
+}

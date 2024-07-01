@@ -27,6 +27,10 @@ public class WorldRendererMixin {
         }
 
     }
+    @Inject(at = @At("HEAD"), method = "render", cancellable = true)
+    public void post_render(float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f matrix4f, Matrix4f matrix4f2, CallbackInfo ci) {
+        MiscUtil.pre_world_render(tickDelta, limitTime, camera, gameRenderer, lightmapTextureManager, matrix4f);
+    }
     @Inject(at = @At("HEAD"), method = "renderSky(Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;FLnet/minecraft/client/render/Camera;ZLjava/lang/Runnable;)V", cancellable = true)
     public void disable_celestial_bodies(Matrix4f matrix4f, Matrix4f projectionMatrix, float tickDelta, Camera camera, boolean thickFog, Runnable fogCallback, CallbackInfo ci) {
         if (MinecraftClient.getInstance().world.getRegistryKey().getValue().equals(new Identifier("limbo:limbo"))) {
@@ -40,8 +44,12 @@ public class WorldRendererMixin {
 
     @Inject(at = @At("HEAD"), method = "renderClouds(Lnet/minecraft/client/util/math/MatrixStack;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;FDDD)V", cancellable = true)
     public void disable_clouds(MatrixStack matrices, Matrix4f matrix4f, Matrix4f matrix4f2, float tickDelta, double cameraX, double cameraY, double cameraZ, CallbackInfo ci) {
+
         if (MinecraftClient.getInstance().world.getRegistryKey().getValue().equals(new Identifier("limbo:limbo"))) {
+
             RenderHelper.render_sky_eye(matrices);
+            RenderHelper.render_sky(matrices);
+
             ci.cancel();
         }
     }

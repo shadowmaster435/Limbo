@@ -2,6 +2,7 @@ package org.shadowmaster435.limbo.data_gen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
@@ -9,6 +10,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import org.shadowmaster435.limbo.init.ModBlocks;
 
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 public class ModBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
@@ -23,12 +25,13 @@ public class ModBlockTagGenerator extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-
-        axe(getOrCreateTagBuilder(AXE_EFFECTIVE));
-        pickaxe(getOrCreateTagBuilder(PICKAXE_EFFECTIVE));
-        fences(getOrCreateTagBuilder(FENCES));
-        fences(getOrCreateTagBuilder(WOODEN_FENCES));
-
+        var args = Arrays.stream(FabricLoader.getInstance().getLaunchArguments(true)).toList();
+        if (args.contains("blockdgen") || args.contains("dgenall")) {
+            axe(getOrCreateTagBuilder(AXE_EFFECTIVE));
+            pickaxe(getOrCreateTagBuilder(PICKAXE_EFFECTIVE));
+            fences(getOrCreateTagBuilder(FENCES));
+            fences(getOrCreateTagBuilder(WOODEN_FENCES));
+        }
     }
 
     public void pickaxe(FabricTagBuilder builder) {

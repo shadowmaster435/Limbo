@@ -13,6 +13,8 @@ import ladysnake.satin.api.managed.uniform.UniformMat4;
 import ladysnake.satin.api.util.GlMatrices;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gl.Framebuffer;
+import net.minecraft.client.gl.SimpleFramebuffer;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.Frustum;
 import net.minecraft.client.util.math.MatrixStack;
@@ -24,6 +26,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 import org.shadowmaster435.limbo.Limbo;
 
 public class CollapseOrbDepthFX implements PostWorldRenderCallbackV2, EntitiesPostRenderCallback, ShaderEffectRenderCallback, ClientTickEvents.EndTick {
@@ -70,8 +73,8 @@ public class CollapseOrbDepthFX implements PostWorldRenderCallbackV2, EntitiesPo
     public void onWorldRendered(MatrixStack matrices, Camera camera, float tickDelta, long nanoTime) {
         uniformSTime.set((ticks + tickDelta) / 20f);
         uniformInverseTransformMatrix.set(GlMatrices.getInverseTransformMatrix(projectionMatrix));
-        Vec3d cameraPos = camera.getPos();
-        uniformCameraPosition.set((float)cameraPos.x, (float)cameraPos.y, (float)cameraPos.z);
+        Vector3f cameraPos = camera.getPos().toVector3f();
+        uniformCameraPosition.set(cameraPos.x, cameraPos.y, cameraPos.z);
         Entity e = camera.getFocusedEntity();
         testShader.render(tickDelta);
 

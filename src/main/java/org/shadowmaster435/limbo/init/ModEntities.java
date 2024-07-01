@@ -22,7 +22,7 @@ public class ModEntities {
 
 
     public static void register() {
-        FabricDefaultAttributeRegistry.register(MONOLITH, MonolithEntity.createMobAttributes().add(EntityAttributes.GENERIC_GRAVITY, 0).add(EntityAttributes.GENERIC_MAX_HEALTH, 1000).add(EntityAttributes.GENERIC_SCALE, 1.5).build());
+        FabricDefaultAttributeRegistry.register(MONOLITH, MonolithEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 1000).add(EntityAttributes.GENERIC_SCALE, 1.5).build());
 
     }
 

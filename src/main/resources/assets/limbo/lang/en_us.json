@@ -16,14 +16,39 @@
   "block.limbo.tenebra_slab": "Tenebra Slab",
   "block.limbo.tenebra_stairs": "Tenebra Stairs",
   "block.limbo.tenebra_wood": "Tenebra Wood",
-
+  "block.limbo.pupil": "Pupil",
+  "block.limbo.feature_test": "Feature Test",
+  "block.limbo.glitch_block": "Glitch Block",
+  "block.limbo.laser_emitter": "Laser Emitter",
+  "block.limbo.laser_redirector": "Laser Redirector",
+  "block.limbo.luminator": "Luminator",
+  "block.limbo.model_test": "Model Test",
+  "block.limbo.solidified_nothingness": "Solidified Nothingness",
+  "block.limbo.silhouetted_cobblestone": "Silhouetted Cobblestone",
+  "block.limbo.silhouetted_cobblestone_slab": "Silhouetted Cobblestone Slab",
+  "block.limbo.silhouetted_cobblestone_stairs": "Silhouetted Cobblestone Stairs",
+  "block.limbo.silhouetted_stone_brick_slab": "Silhouetted Stone Brick Slab",
+  "block.limbo.silhouetted_stone_brick_stairs": "Silhouetted Stone Brick Stairs",
+  "block.limbo.silhouetted_stone_bricks": "Silhouetted Stone Bricks",
+  "block.limbo.silhouetted_tall_grass": "Silhouetted Tall Grass",
+  "block.limbo.glumstone": "Glumstone",
+  "block.limbo.glumstone_lamp": "Glumstone Lamp",
 
   "entity.limbo.monolith": "Monolith",
 
-
-  "item.limbo.tenebra_twig": "Tenebra Twig",
+  "item.limbo.dim_shard": "Dim Shard",
+  "item.limbo.onyx_berries": "Onyx Berries",
   "item.limbo.illuminum": "Illuminum",
+  "item.limbo.monolith_fragment": "Monolith Fragment",
+  "item.limbo.tenebra_twig": "Tenebra Twig",
+  "item.limbo.tenebra_axe": "Tenebra Axe",
+  "item.limbo.tenebra_hoe": "Tenebra Hoe",
+  "item.limbo.tenebra_pickaxe": "Tenebra Pickaxe",
+  "item.limbo.tenebra_shovel": "Tenebra Shovel",
+  "item.limbo.tenebra_sword": "Tenebra Sword",
 
+  "itemGroup.limbo.items": "Limbo Items",
+  "itemGroup.limbo.blocks": "Limbo Blocks",
 
   "menu.limbo": "Play",
   "menu.limboquit": "Quit"

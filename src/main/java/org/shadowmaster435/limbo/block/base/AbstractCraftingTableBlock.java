@@ -14,12 +14,16 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.concurrent.Callable;
+
 public class AbstractCraftingTableBlock extends Block {
 
+    transient String tst = "";
 
 
     public AbstractCraftingTableBlock(Settings settings) {
         super(settings);
+
     }
 
 

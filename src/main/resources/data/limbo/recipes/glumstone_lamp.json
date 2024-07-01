@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GSG",
+    "SLS",
+    "GSG"
+  ],
+  "key": {
+    "G": {
+      "item": "limbo:glumstone"
+    },
+    "S": {
+      "item": "limbo:silhouetted_cobblestone"
+    },
+    "L": {
+      "item": "limbo:illuminum_light"
+    }
+  },
+  "result": {
+    "id": "limbo:glumstone_lamp",
+    "count": 1
+  }
+}

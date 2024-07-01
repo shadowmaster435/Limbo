@@ -7,12 +7,20 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import org.lwjgl.BufferUtils;
 import org.shadowmaster435.limbo.Limbo;
 import org.shadowmaster435.limbo.block.entity.ModelTestEntity;
+import org.shadowmaster435.limbo.init.ModShaders;
+import org.shadowmaster435.limbo.shader.CollapseOrbDepthFX;
+import org.shadowmaster435.limbo.shader.DepthRenderLayerShader;
+import org.shadowmaster435.limbo.util.MiscUtil;
 import org.shadowmaster435.limbo.util.RenderHelper;
 import org.shadowmaster435.limbo.util.block_entity.AnimatedBlockEntityRenderer;
 import org.shadowmaster435.limbo.util.render.geo.TexturedQuadStripPipe;
+import org.shadowmaster435.limbo.util.render.texture.ByteBufferTexture;
 import org.shadowmaster435.limbo.util.render.util.VertexFunction;
+
+import java.nio.ByteBuffer;
 
 public class ModelTestRenderer implements AnimatedBlockEntityRenderer<ModelTestEntity> {
 
@@ -21,18 +29,25 @@ public class ModelTestRenderer implements AnimatedBlockEntityRenderer<ModelTestE
     public ModelTestRenderer(BlockEntityRendererFactory.Context ctx) {
 
     }
+    public final ByteBufferTexture byte_tex = new ByteBufferTexture(128, 128);
+
     public static final Identifier tex = new Identifier(Limbo.id, "textures/block/dim_ore.png");
     @Override
     public void render(ModelTestEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         var p = MinecraftClient.getInstance().player;
-      //  matrices.translate(0.5,0,0.5);
-     //   RenderHelper.face_matrix_towards(entity.getPos().toCenterPos(), p.getLerpedPos(tickDelta).add(0, p.getStandingEyeHeight(),0).add(p.getWidth() / 2,0, p.getWidth() / 2f), matrices);
-      //  matrices.scale(1,-1,1);
-        quad_test.render(matrices, tex, light, overlay, new VertexFunction((i) -> getp(i, tickDelta, entity)));
 
-        //        entity.set_animation_counter(entity.getWorld().getTime());
-//        AnimatedBlockEntityRenderer.super.render(entity, tickDelta, matrices, vertexConsumers, light, overlay);
-//        entity.animation_state.startIfNotRunning((int) MinecraftClient.getInstance().world.getTime());
+        quad_test.render(matrices, tex, light, overlay, new VertexFunction((i) -> getp(i, tickDelta, entity)));
+        try {
+
+//            buffer.clear();
+//            buffer.put(new byte[] {127,-128, -128, 127, -128, 127, -128, 127,
+//                    -128, -128, 127, 127, -128, -128, -128, 127});
+//            buffer.compact();
+//            byte_tex.write(buffer);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public Vector3f getp(int i, float tickDelta, ModelTestEntity entity) {

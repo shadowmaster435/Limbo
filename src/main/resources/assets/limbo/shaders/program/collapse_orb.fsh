@@ -6,6 +6,7 @@ uniform sampler2D DiffuseSampler;
 uniform sampler2D DepthSampler;
 
 uniform sampler2D Floor;
+uniform sampler2D HMTest;
 
 // Position of the camera
 uniform vec3 CameraPosition;
@@ -154,6 +155,15 @@ float rand(in vec4 p) {
     return fract(sin(p.x*1234. + p.y*2345. + p.z*3456. + p.w*4567.) * 5678.);
 }
 
+vec3 get_heightmap_pos(vec4 col_pos) {
+    return (col_pos.rgb * 255) ;
+}
+
+
+bool can_see_sky(vec3 pix_pos, vec4 col_pos) {
+    vec3 pos = get_heightmap_pos(col_pos);
+    return pix_pos.y + 0.05  >= pos.y;
+}
 
 void main()
 {
@@ -203,6 +213,13 @@ void main()
             fragColor.rgb = vec3(0.0);
         }
     }
-  //  fragColor.rgb = vec3(sceneDepth);
+    float range = 128;
+    vec2 non_skippy_camera_pos = CameraPosition.xz ;
 
+    vec2 camera_smooth = (mod(CameraPosition.zx , vec2(1)));
+    vec2 i = mod((((pixelPosition.zx - CameraPosition.zx) - 0.5) + camera_smooth) - (range / 2f), range) / (range - 1);
+    if (can_see_sky(pixelPosition, texture(HMTest, i))) {
+        fragColor.r = 0;
+    }
+        //fragColor = texture(HMTest, i);
 }

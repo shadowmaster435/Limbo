@@ -1,0 +1,8 @@
+
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "limbo:block/stripped_tenebra_log_side",
+    "side": "limbo:block/stripped_tenebra_log_side"
+  }
+}
